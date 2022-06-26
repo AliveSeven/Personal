@@ -1,0 +1,760 @@
+*{
+  margin: 0;   /* 清除浏览器有可能默认设置边距 */
+  padding: 0;  /* 清除浏览器有可能默认设置边距  */
+  text-decoration: none;  /* 消去超链接下面的下划线等 */
+  font-family: "Ubuntu",sans-serif; /* 使用Ubuntu的字体系列 */
+  box-sizing: border-box; /* 为元素指定的任何内边距和边框都将在已设定的宽度和高度内进行绘制 */
+}
+
+html{
+  scroll-behavior: smooth;  /*窗口平稳滑动*/
+}
+
+::selection{  /* 使被选中的文本变色  */
+  background-color: #48dbfb60;
+}
+
+::-webkit-scrollbar{ /* 滚动条整体部分 */
+  width: 10px;
+  background-color: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb{ /* 滚动条里面的小方块，能向上向下移动 */
+  background-color: #353b48; /* 改变颜色 */
+}
+
+.navbar{
+  position: fixed; /* 生成绝对定位的元素，相对于浏览器窗口进行定位。*/
+  background-color: transparent; /* 默认。背景颜色为透明。*/
+  width: 100%;  /* 宽度设成100% */
+  padding: 30px 0; /* 上下内边框设成30px左右设为0 */
+  top: 0;
+  z-index: 999; /*z-index 属性设置元素的堆叠顺序。拥有更高堆叠顺序的元素总是会处于堆叠顺序较低的元素的前面。*/
+  transition:  .3s linear; /* 过渡,0.3s,恒速 */
+}
+
+.inner-width{
+  max-width: 1300px; /* 设置最大宽度 */
+  margin: auto; /* 外边距设成居中 */
+  padding: 0 40px; /* 内边距设置上下0,左右40px */
+}
+
+.navbar .inner-width{
+  display: flex; /* 设成弹性布局 */
+  align-items: center; /* 文本设成居中 */
+  justify-content: space-between;/* 在弹性盒对象的 <div> 元素中的各项周围留有空白*/
+}
+
+.logo{
+  width: 44px; /* logo宽度设成44px */
+  height: 32px; /* logo高度设成32px */
+  background-image: url(../images/white-logo.png); /* 盒子放入图片 */
+  background-size: contain; /* 图片保持比例放大或缩小填充容器 */
+}
+
+.menu-toggler{
+  background: none; /* 设置背景 */
+  width: 30px; /* 宽30px */
+  border: none; /* 边框属性none */
+  cursor: pointer; /* 光标呈现为指示链接的指针（一只手） */
+  outline: none; /* 去掉线 */
+  position: relative; /*生成相对定位的元素，相对于其正常位置进行定位*/
+  z-index: 999;/*z-index 属性设置元素的堆叠顺序。拥有更高堆叠顺序的元素总是会处于堆叠顺序较低的元素的前面。*/
+  display: none; /* 这个元素不会显示出来 */
+}
+
+.menu-toggler span{
+  display: block; /*此元素将显示为块级元素，此元素前后会带有换行符。*/
+  height: 3px; /* 高度设成3px */
+  background-color: #fff; /* 块背景颜色设成#fff */
+  margin: 6px 0; /* 外边框上下6px,左右0 */
+  position: relative;/*生成相对定位的元素，相对于其正常位置进行定位*/
+  transition: .3s linear; /* 过渡,.3s,恒速 */
+}
+
+.navbar-menu a{
+  color: #fff; /*文字颜色设成白色*/
+  font-size: 15px;/*文字大小改成15px*/
+  font-weight: 500; /*设置文字的粗细*/
+  margin-left: 30px; /* 文字左边外边距设置30px */
+  transition: .2s linear; /* 文字过渡,.2s 恒速 */
+}
+
+.navbar-menu a:hover{
+  color: #48dbfb; /* 鼠标经过变色 */
+}
+
+.sticky{    /* 菜单处设一个sticky类 */
+  background-color: #fff; /*背景颜色为白色*/
+  padding: 18px 0; /* 盒子内边框上下18px,左右0 */
+}
+
+.sticky .logo{ /* logo处 */
+  background-image: url(../images/black-logo.png); /* 图片设置 */
+}
+
+.sticky .navbar-menu a{
+  color: #111; /* 超链接颜色变成黑色 */
+}
+
+.sticky .menu-toggler span{
+  background-color: #111; /* 颜色变化 */
+}
+
+#home{
+  height: 100vh; /* vh就是当前屏幕可见高度的100% */
+  min-height: 500px; /* 最小高度500px */
+  background: url(../images/bg.jpg) no-repeat center; /* no-repeat是不平铺,center是居中于div的中心部分 */
+  background-size: cover;/*把背景图扩展至足够大，直至完全覆盖背景区域，图片比例保持不变且不会失真*/
+  background-attachment: fixed; /*随着页面的滚动轴背景图片不会移动*/
+}
+
+#home .inner-width{
+  display: flex; /* 设成弹性布局 */
+  align-items: center; /* 元素位于容器的中心。 */
+  justify-content: center; /* 项目位于容器的中心。 */
+  height: 100%; /*高度100*/
+  text-align: center;/*文本居中*/
+}
+
+#home .content{
+  width: 100%; /*宽度设成100%*/
+  color: #fff;/*颜色设成白色*/
+}
+
+#home .content h1{
+  font-size: 60px;/*文字大小设成60px*/
+  margin-bottom: 60px;/*下外边框60px*/
+}
+
+#home .content h1::after{ /* 接在h1后面 */
+  content: "AliveSeven"; /* 插入生成内容 */
+  animation: textanim 10s linear infinite; /* 动画设置名为textanim,10s完成无限制 */
+}
+
+@keyframes textanim{ /* 动画内容 */
+  25%{
+    content: "A Developer";/* 生成文本 */
+  }
+  50%{
+    content: "A Designer";
+  }
+  75%{
+    content: "A Software Engineer";
+  }
+}
+
+.sm a{
+  color: #fff; /* 设成白色 */
+  font-size: 22px; /* 大小设成22px */
+  margin: 0 10px; /* 上下外边距设成0,左右设成10px */
+  transition: .2s linear; /* 过渡,0.2秒恒速 */
+}
+
+.sm a:hover{
+  color: #48dbfb; /* 鼠标经过会变成蓝色 */
+}
+
+#home .buttons{
+  margin-top: 60px; /* 按钮上外边框60px */
+}
+
+#home .buttons a{
+  position: relative; /* 相对定位 */
+  display: inline-block;/* 不独占一行的块级元素 */
+  margin: 15px 30px;/* 上下外边距15px,左右30px */
+  font-size: 16px; /* 文字大小设成16px */
+  font-weight: 500; /* 粗细程度设成500 */
+  width: 180px; /* 宽度设置180px */
+  padding: 14px 0; /* 上下内边框14px,左右0 */
+  border-radius: 6px; /* 圆角设置 */
+  color: #fff; /* 文字颜色设成白色 */
+  /* 背景渐变色 */
+  background-image: linear-gradient(to right, #03a9f4, #f441a5, #ffeb3b, #09a8f4);
+  /* 背景渐变色大小 */
+  background-size: 400%;
+  z-index: 1;
+
+}
+
+#home .buttons a::before { /* 按钮超链接之前 */
+  content: '';
+  position: absolute; /*绝对定位*/
+  top: -5px; /* 属性规定元素的顶部边缘-5px */
+  bottom: -5px; /* 属性规定元素的下部边缘-5px */
+  left: -5px; /* 属性规定元素的左部边缘-5px */
+  right: -5px; /* 属性规定元素的右部边缘-5px */
+  border-radius: 50px;
+  /* 背景渐变色 */
+  background-image: linear-gradient(to right, #03a9f4, #f441a5, #ffeb3b, #09a8f4);
+  /* 背景渐变色大小 */
+  background-size: 400%;
+  /* 元素的位置 底层或者顶层  -值表示底层 + 值表示顶层 */
+  z-index: -1;
+  /* 设置模糊度 显示发光效果 */
+  filter: blur(20px);
+}
+
+#home .buttons a {
+  /* 动画 名称 时间 infinite 是无限次播放 */
+  animation: sun 8s infinite;
+}
+
+#home .buttons a::before { /* 按钮之前鼠标经过设置动画 */
+  animation: sun 8s infinite;
+}
+
+@keyframes sun {
+  100% {
+      /* 背景位置 */
+      background-position: -400% 0;
+  }
+}
+
+section{
+  padding: 100px 0; /* 上下内边框100px,左右0*/
+  background-color: #f1f1f1; /* 背景颜色为白色 */
+}
+
+.section-title{
+  text-align: center; /*文本居中*/
+  margin-bottom: 80px; /* 下外边框80px */
+  position: relative; /*相对位置*/
+  font-size: 26px;/* 文字大小26px */
+  padding-bottom: 20px;/*下内边框20px*/
+  color: #111;/*文字颜色黑色*/
+}
+
+.section-title::before{ /* 标题之前 */
+  content: ""; /* 文本 */
+  position: absolute; /* 绝对位置 */
+  width: 80px; /* 宽80px */
+  height: 3px; /* 高3px */
+  background-color: #111; /*黑色*/
+  bottom: 0;
+  left: calc(50% - 40px); /* 动态设置元素的左部边缘的长度 */
+}
+
+.section-title::after{/*标题之后*/
+  content: "";/* 文本 */
+  position: absolute;/* 绝对位置 */
+  width: 16px;/* 宽16px */
+  height: 10px;/* 高10px */
+  background-color: #48dbfb;/*背景颜色*/
+  border: 4px solid #f1f1f1;
+  left: calc(50% - 12px); /* 动态设置元素的左部边缘的长度 */
+  bottom: -7px; /* 下部边缘长度-7px */
+}
+
+.about-content{
+  display: flex;/*弹性布局*/
+  align-items: center;/*盒子居中*/
+  flex-wrap: wrap;/*规定灵活的项目在必要的时候拆行或拆列*/
+}
+
+.about-pic{
+  width: 200px;/* 宽度设置200px */
+  border-radius: 50%;/*圆角50%*/
+  margin-right: 100px;/*右外边框100px*/
+}
+
+.about-text{
+  flex: 1; /*flex: 1; === flex: 1 1 0;flex: <flex-grow> <flex-shrink> <flex-basis> */
+}
+
+.about-text h3{
+  margin: 10px 0;/*上下外边框10px,左右为0*/
+  color: #444;/*颜色*/
+  font-size: 16px;/*文字大小*/
+}
+
+.about-text h3 span:nth-child(1):after,
+.about-text h3 span:nth-child(2):after{
+  content: "";
+  width: 6px;
+  height: 6px;
+  background-color: #444;
+  display: inline-block; /*结合的行内和块级的优点*/
+  border-radius: 50%;/*圆角百分之50*/
+  margin: 0 14px; /* 上下外边距0,左右14px */
+}
+
+.about-text p{
+  font-size: 17px;/*文字大小17px*/
+  text-align: justify;/*实现两端对齐文本效果。*/
+  line-height: 26px;/* 属性设置行间的距离（行高）。26px*/
+  margin-top: 20px;/* 上外边距20px */
+}
+
+.skills{
+  margin-top: 40px;/* 上外边距40px */
+  display: flex; /*弹性布局设置*/
+  justify-content: space-between; /*在弹性盒对象的 <div> 元素中的各项周围留有空白*/
+  flex-wrap: wrap;/*	规定灵活的项目在必要的时候拆行或拆列。*/
+}
+
+.skill{
+  width: calc(50% - 20px);
+  margin: 15px 0;
+}
+
+.skill-info{
+  display: flex;/*弹性布局*/
+  justify-content: space-between; /*在弹性盒对象的 <div> 元素中的各项周围留有空白*/
+}
+
+.skill-bar{ /* 调整进度条的大小位置 */
+  height: 3px;
+  background-color: #ddd;
+  margin-top: 14px; /* 上外边框14px */
+  position: relative; /* 相对定位 */
+}
+
+.skill-bar::after{
+  content: ""; /* 文本 */
+  position: absolute; /* 绝对位置 */
+  height: 10px; /* 进度条的高度,也可以说是厚度吧 */
+  background-color: #48dbfb;
+  bottom: 0; /* 元素的底部边缘auto(自动适应) */
+}
+
+.skill-bar::after {
+  animation-duration: 2.0s; /*定义动画完成一个周期所需要的时间 2.0s */
+  animation-fill-mode: forwards; /*当动画完成后，保持最后一个属性值*/
+  animation-timing-function: ease-in-out; /*	动画以低速开始和结束。*/
+}
+
+.html::after{
+  animation-name: html; /*html的动画名*/
+}
+
+.css::after{
+  animation-name: css;/*css的动画名*/
+}
+
+.js::after{
+  animation-name: js;/*js的动画名*/
+}
+
+.Python::after{
+  animation-name: Python;/*Python#的动画名*/
+}
+
+.Vue::after{
+  animation-name: Vue;/*Vue的动画名*/
+}
+
+.Java::after{
+  animation-name: Java;/*Java的动画名*/
+}
+
+@keyframes html { /* html的动画变化 */
+  from {
+    width: 0;
+  }
+  to {
+    width: 90%;
+  }
+}
+
+@keyframes css { /* css的动画变化 */
+  from {
+    width: 0;
+  }
+  to {
+    width: 80%;
+  }
+}
+
+@keyframes js { /* js的动画变化 */
+  from {
+    width: 0;
+  }
+  to {
+    width: 70%;
+  }
+}
+
+@keyframes Java { /* C#的动画变化 */
+  from {
+    width: 0;
+  }
+  to {
+    width: 70%;
+  }
+}
+
+@keyframes Vue { /* mysql的动画变化 */
+  from {
+    width: 0;
+  }
+  to {
+    width: 90%;
+  }
+}
+
+@keyframes Python { /* Java的动画变化 */
+  from {
+    width: 0;
+  }
+  to {
+    width: 80%;
+  }
+}
+
+section.dark{   /* Services部分背景颜色调成黑色*/
+  background-color: #353b48;
+}
+
+section.dark .section-title{   /* 标题改成白色 */
+  color: #f1f1f1;
+}
+
+section.dark .section-title::before{ /* 标题处的外边(before)的横杠调色 */
+  background-color: #f1f1f1;
+}
+
+section.dark .section-title::after{ /* 实线边框 */
+  border: 4px solid #353b48;
+}
+
+.services{   /* Services盒子css调整 */
+  display: flex;  /* 弹性布局 */
+  justify-content: space-between; /* 在弹性盒对象的 <div> 元素中的各项周围留有空白*/
+  flex-wrap: wrap; /* 规定灵活的Services在必要的时候拆行或拆列。 */
+}
+
+.service{
+  width: calc(33% - 20px); /*动态计算盒子宽度*/
+  text-align: center; /* 文本居中 */
+  border: 1px solid #48dbfb; /* 边框实线浅蓝色 */
+  border-radius: 6px; /*圆角的边框*/
+  margin: 20px 0; /* 外边框上下20px,左右0 */
+  padding: 40px 20px; /* 内边框上下40px,左右20px */
+  color: #fff; /* 文字颜色白色 */
+  cursor: pointer; /* 光标呈现为指示链接的指针（一只手） */
+  transition: .3s linear; /* 过渡恒速渐变,0.3s的速度 */
+}
+
+.service .icon{ /* 图标的css美观 */
+  color: #48dbfb; /* 颜色设置 */
+  font-size: 40px;  /* 图标大小设置 */
+  margin-bottom: 20px;  /* 图标下外边框20px*/
+  transition: .3s linear; /* 颜色过渡的速度恒速0.3s */
+}
+
+.service h4{
+  font-size: 16px;  /*文字大小调成16px*/
+  margin-bottom: 6px; /* 文字下外边框6px */
+}
+
+.service:hover{
+  background-color: #48dbfb; /* 盒子鼠标经过变色 */
+}
+
+.service:hover .icon{
+  color: #fff; /* 鼠标经过图标颜色变色 */
+}
+
+.time-line,.works{/* Education时间线css编辑 */
+  display: flex;  /* 弹性布局设置 */
+  justify-content: space-between; /* 在弹性盒对象的 <div> 元素中的各项周围留有空白  */
+  flex-wrap: wrap; /*规定灵活的Services在必要的时候拆行或拆列。*/
+}
+
+.block{ /* block盒子css设置 */
+  width: calc(50% - 20px); /*动态计算盒子宽度*/
+  background-color: #fff; /*背景颜色设置*/
+  border: 1px solid #ddd; /*边框设置实线1px #ddd颜色*/
+  margin: 10px 0; /* 上下外边框10px,左右为0 */
+  padding: 30px; /* 内边框上右下左都是30px */
+  position: relative;/*相对定位*/
+}
+
+.block::before{ /* block盒子前面增加的东西做css编辑 */
+  content: "";
+  position: absolute; /* 绝对定位 */
+  width: 1px; /* 宽度设置1px */
+  height: 120%; /* 高度设置 */
+  background-color: #ddd; /* 背景颜色设置 */
+  left: -20px;/* 左部边缘的长度-20px */
+  top: 50%; /* 设置以包含元素的百分比计的上边位置50% */
+  transform: translateY(-50%); /* 旋转 div 元素,定义转换,只是用Y轴的值 */
+}
+
+.block::after{ /* block之后 */
+  content: "";
+  position: absolute; /* 绝对定位 */
+  width: 16px; /* 宽度设置16px */
+  height: 16px; /* 高度设置16px */
+  background-color: #48dbfb; /* 背景颜色设置 */
+  left: -28px; /* 左部边缘长度-28px */
+  top: 30px; /* 上部边缘设置30px */
+  border-radius: 50%;/*圆角百分之50*/
+}
+
+.block h3{ /* block中的h3文字大小和位置调整 */
+  font-size: 16px; 
+  margin: 10px 0;
+}
+
+.block p{ /* block中的p文字大小位置调整 */
+  font-size: 15px;
+  color: #444;
+}
+
+.work{  /* Wrok部分的css编辑 */
+  width: calc(33% - 10px); /* 盒子宽度动态调整*/
+  overflow: hidden; /* 隐藏溢出,就是鼠标经过图片的时候不会因为图片的大小太大了,而显示出图片溢出盒子大小的那个部分 */
+  border-radius: 6px; /* 圆角大小设置6px */
+  margin: 10px 0; /* 上下外边框10px,左右0*/
+  cursor: pointer; /* 光标呈现为指示链接的指针（一只手） */
+  position: relative; /* 相对定位 */
+}
+
+.work img{ /* 图片设置 */
+  width: 100%;
+  height: 100%;
+  transition: .4s linear; /* 恒速0.4s显示出来 */
+}
+
+.work::before{ /* work之前的设置,和上面差不多 */
+  content: "";
+  position: absolute; /* 绝对定位 */
+  width: 100%; /* 宽度设置 */
+  height: 100%; /* 高度设置 */
+  z-index: 1; /* zz叠加性设置 */
+  background-color: #48dbfbcc; /* 背景颜色设置 */
+  transition: .2s linear; /*  恒速变化0.2秒设置*/
+  opacity: 0; /*设置 div 元素的不透明级别为0(完全透明)*/
+  transform: scale(0); /* X和Y都是缩放转换值为0 */
+}
+
+.work .info{    /* info盒子css调整 */
+  position: absolute; /* 绝对定位 */
+  z-index: 2; /* z叠加性为2 */
+  bottom: 40px; /* 下部边缘长度40px */
+  left: 40px; /* 左部边缘长度40px */
+  color: #fff; /* 文字颜色调整 */
+  transition: .4s linear; /* 过渡变化为0.4s恒速 */
+  opacity: 0;/*设置 div 元素的不透明级别为0(完全透明)*/
+}
+
+.work:hover img{
+  transform: scale(1.6) rotate(25deg);/* X轴和Y轴缩放值为1.6(其实就是放大1.6倍),定义2D旋转25度 */
+}
+
+.work:hover::before,
+.work:hover .info
+{
+  opacity: 1;  /*设置 div 元素的不透明级别为0(完全非透明)*/
+  transform: scale(1); /* X和Y轴缩放值设为1 */
+}
+
+.contact-info{   /* contact部分css设置 */
+  display: flex; /* 弹性布局 */
+  justify-content: space-between; /* 在弹性盒info的 <div> 元素中的各项周围留有空白  */
+  flex-wrap: wrap; /*规定灵活的info在必要的时候拆行或拆列。*/
+  margin-bottom: 60px; /* 下外边框为60px */
+}
+
+.contact-info .item{ /* contact中item部分css设置 */
+  width: calc(33% - 20px);/*宽度同样还是采用动态计算值*/
+  height: 160px; /* 高度设置为160px */
+  background-color: #353b48; /* 背景颜色设置 */
+  color: #fff; /* 文字颜色设置 */
+  text-align: center; /* 文本居中 */
+  border-radius: 4px; /* 圆角大小设置4px */
+  cursor: pointer; /* 光标呈现为指示链接的指针（一只手） */
+  transition: .3s linear; /* 恒速变化0.3s */
+}
+
+.contact-info i{ /* 对info的斜体文本css编辑 */
+  display: block; /* 显示为块级元素，此元素前后会带有换行符。*/
+  font-size: 40px;/*文字大小设置为40px*/
+  line-height: 120px; /* 属性设置行间的距离（行高）120px */
+  height: 100px; /* 高度设置10px */
+}
+
+.contact-info .item:hover{
+  background-color: #48dbfb; /* 鼠标经过显现蓝色 */
+}
+
+.contact-form{
+  display: flex; /*设为弹性布局*/
+  justify-content: space-between;/* 在弹性盒form的 <div> 元素中的各项周围留有空白  */
+  flex-wrap: wrap;/*规定灵活的form在必要的时候拆行或拆列。*/
+}
+
+.contact-form input, .contact-form textarea{ /* 对textarea设置css编辑 */
+  width: 100%; /* 宽度设置 */
+  height: 50px; /* 高度设置50px */
+  margin: 10px 0; /* 上下外边框设成10px,左右为0 */
+  background-color: #353b48;  /* 颜色设置 */
+  border: none; /* 边框去掉 */
+  outline: none; /* 去掉线 */
+  padding: 20px; /* 内边框各边都是20px */
+  border-radius: 4px; /* 圆角大小4px */
+  color: #fff; /* 文本颜色设置 */
+}
+
+.nameZone, .emailZone{
+  max-width: calc(50% - 10px); /* name的那个框和email的那个框的最大宽度这里用动态计算设置其值 */
+}
+
+.messageZone{
+  min-height: 200px; /* 最小高度设为200px* /
+  resize: vertical; /* 	用户可调整massageZone的高度。 */
+}
+
+.contact-form .btn{ /* 对submit类型的Send Message做css设置 */
+  width: 180px; /* 宽度设成180px */
+  background-color: transparent; /* 背景颜色默认 */
+  color: #48dbfb; /* 设置文本颜色 */
+  font-size: 16px; /* 文字大小设成16px */ 
+  border: 2px solid #48dbfb; /* 边框设成实线2px #48dbfb代号的颜色 */
+  padding: 0; /* 清除浏览器有可能默认设置边距 */
+  margin-left: auto; /* 左外边框自适应 */
+  cursor: pointer; /* 光标呈现为指示链接的指针（一只手） */
+  transition: .3s linear; /* 过渡,恒速0.3s */
+}
+
+.contact-form .btn:hover{
+  background-color: #48dbfb; /* 鼠标经过btn处背景颜色变化 */
+  color: #fff; /* 文本颜色变化 */
+}
+
+footer{  /* 页脚css设置 */
+  background: url(../images/bg.jpg) no-repeat center; /* 设置背景 */
+  color: #fff; /* 文字颜色设置 */
+  padding: 80px 0; /* 盒子内边框上下80px,左右0 */
+  text-align: center; /* 文本居中 */
+}
+
+.copyright{ /* 盒子位置 */
+  margin-bottom: 20px; /* 下外边框20px */
+  font-size: 15px; /* 文字大小15px */
+}
+
+.copyright a{ /* 对超链接css设置 */
+  font-size: 16px; /* 文字(图标)大小16px */
+  color: #48dbfb; /* 颜色设置 */
+  font-weight: 500; /* 文字(图标)粗细大小设成500 */
+}
+
+.goTop{   /* goTop类设置 */
+  position: fixed;  /* 固定位置 */
+  z-index: 999; /* 元素的堆叠顺序为999 */
+  bottom: 40px; /* 下边缘40px */
+  right: 40px; /* 右边缘40px */
+  width: 40px; /* 宽度40px */
+  height: 40px; /* 高度40px */
+  background-color: #48dbfb; /* 背景颜色设置 */
+  border: none; /* 边框去掉 */
+  border-radius: 6px; /* 圆角大小设置6px */
+  cursor: pointer; /* 光标指针变成一只手 */
+  color: #fff;  /* 文字颜色 */
+  outline: none; /* 去掉线 */
+  display: none; /* 此元素不会被显示 */
+}
+
+
+@media screen and (max-width: 980px){ /* 当浏览器的可视区域小于980px */
+  .menu-toggler{
+    display: block; /* 显示为块级元素，此元素前后会带有换行符。*/
+  }
+
+  .navbar-menu{  /* 菜单导航css设置 */
+    position: fixed; /* 固定位置 */
+    height: 100vh; /* vh就是当前屏幕可见高度的100% */
+    width: 100%; /* 宽度设置 */
+    background-color: #353b48;  /* 背景颜色设置 */
+    top: 0; /* 让这个层充满整个屏幕 */
+    right: -100%; /* 放在右端-100%的位置 */
+    max-width: 400px; /* 最大宽度设置 */
+    padding: 80px 50px; /* 上下内边框80px,左右50px */
+    transition: .3s linear; /* 以0.3s的恒速过渡出来 */
+  }
+
+  .navbar-menu a{ /* 菜单超链接css */
+    display: block; /* 显示为块级元素，此元素前后会带有换行符。*/
+    font-size: 30px; /* 文字大小30px */
+    margin: 30px 0; /* 外边框上下30,左右0 */
+  }
+
+  .sticky .navbar-menu{
+    background-color: #f1f1f1; /* sticky类处的菜单颜色变成白色 */
+  }
+
+  .navbar-menu.active{
+    right: 0;  /* active类,会让导航菜单的右端位置设在0处(靠右) */
+  }
+
+  .menu-toggler.active span:nth-child(1){ /* 第一个span旋转-45度,顶端4px */
+    transform: rotate(-45deg);
+    top: 4px;
+  }
+
+  .menu-toggler.active span:nth-child(2){ /* 第二个span */
+    opacity: 0; /* 设为完全透明 */
+  }
+
+  .menu-toggler.active span:nth-child(3){ /* 第三个span */
+    transform: rotate(45deg); /* 旋转-45度 */
+    bottom: 14px; /* 下端14px */
+  }
+
+  .inner-width{ /* 内部宽度类css */
+    max-width: 800px; /* 最大宽度设成800px */
+  }
+
+  .about-pic{ /* about头像css设置 */
+    margin: 0 auto 60px; /* 上下外边框0,左右60ox,自适应 */
+  }
+
+  .about-text{ /*  about文本设置 */ 
+    flex: 100%;
+    text-align: center; /* 文本居中 */
+  }
+
+  .service{
+    width: calc(50% - 20px); /* Service宽度动态计算其值 */
+  }
+
+  .block{
+    width: calc(100% - 20px); /* 动态计算其宽度值 */
+    margin-left: auto; /* 左外边框自适应 */
+  }
+
+  .work{
+    width: calc(50% - 10px);  /* work宽度动态计算其值 */
+  }
+
+  .contact-info .item{
+    width: 100%;    /* 盒子宽度设置 */
+    margin: 10px 0; /* 上下外边框10px,左右0 */
+  }
+}
+
+@media screen and (max-width: 600px){  /* 当浏览器的可视区域小于600px */
+  .inner-width{
+    padding: 0 20px; /* 上下内边框0,左右20px */
+  }
+
+  .skill{
+    width: 100%; /* skill处宽度设成100% */
+  }
+
+  .service{
+    width: 100%; /* Service处宽度设成100% */
+  }
+
+  .work{
+    width: 100%; /* work处宽度设成100% */
+  }
+
+  .nameZone, .emailZone{
+    max-width: 100%; /* nameZone和emailZone处最大宽度设成100% */
+  }
+}
+
