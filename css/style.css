@@ -104,7 +104,7 @@ html{
 #home{
   height: 100vh; /* vh就是当前屏幕可见高度的100% */
   min-height: 500px; /* 最小高度500px */
-  background: url(../images/bg.jpg) no-repeat center; /* no-repeat是不平铺,center是居中于div的中心部分 */
+  background: url('https://m1.im5i.com/2022/09/14/U8QIM7.jpg') no-repeat center; /* no-repeat是不平铺,center是居中于div的中心部分 */
   background-size: cover;/*把背景图扩展至足够大，直至完全覆盖背景区域，图片比例保持不变且不会失真*/
   background-attachment: fixed; /*随着页面的滚动轴背景图片不会移动*/
 }
@@ -625,7 +625,7 @@ section.dark .section-title::after{ /* 实线边框 */
 }
 
 footer{  /* 页脚css设置 */
-  background: url(../images/bg.jpg) no-repeat center; /* 设置背景 */
+  background: url('https://m1.im5i.com/2022/09/14/U8QIM7.jpg') no-repeat center; /* 设置背景 */
   color: #fff; /* 文字颜色设置 */
   padding: 80px 0; /* 盒子内边框上下80px,左右0 */
   text-align: center; /* 文本居中 */
